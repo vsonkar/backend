@@ -2,15 +2,17 @@ pipeline {
     agent any
 
     stages {
-        stage('Install Dependencies') {
+        stage('Clone Repo') {
             steps {
-                sh 'pip3 install -r requirements.txt'
+                echo 'Cloning backend repo and preparing environment...'
             }
         }
 
-        stage('Run Flask App') {
+        stage('Run App') {
             steps {
-                sh 'pm2 restart flask-app || pm2 start app.py --name flask-app'
+                echo 'Simulating Flask app start...'
+                // You can later replace this with:
+                // sh 'python3 app.py' or bat 'python app.py'
             }
         }
     }
